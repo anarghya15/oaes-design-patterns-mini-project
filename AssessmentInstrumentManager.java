@@ -51,7 +51,6 @@ public class AssessmentInstrumentManager {
         
     }
 
-    //TODO
     public void addItem(String userId, String instrumentId, String itemType, ItemMetadata itemMetadata) {
         System.out.println("Adding item to Assessment Instrument: " + instrumentId+ "by user: " + userId);        
         AssessmentInstrument instrument = dbService.getAssessmentInstrument(instrumentId);
