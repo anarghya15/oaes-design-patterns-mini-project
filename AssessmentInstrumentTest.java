@@ -79,7 +79,9 @@ public class AssessmentInstrumentTest {
 
     static class MockItemBankManager implements ItemBankManager {
         public Item getItem(String itemType, ItemMetadata itemMetadata) {
-            return ItemFactory.createItem(itemType, itemMetadata);
+            Item item = ItemFactory.createItem(itemType, itemMetadata);
+            System.out.println("Retrieved item: " + item.getId());
+            return item;
         }
     }
 }
