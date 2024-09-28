@@ -20,7 +20,6 @@ public class AssessmentInstrumentTest {
         System.out.println("Retrieved instrument: " + (retrievedInstrument != null ? "success" : "failure"));
 
         // Test updating an assessment instrument
-
         manager.updateAssessmentInstrument("user1", retrievedInstrument);
         System.out.println("Updated instrument successfully");
 
@@ -31,20 +30,17 @@ public class AssessmentInstrumentTest {
         System.out.println("Added item successfully");
 
         // Test reviewing the instrument
-
         manager.reviewAssessmentInstrument(instrument.getId(), "reviewer1");
         System.out.println("Instrument sent for review");
 
         // Add item after review should give exception
-        try{
+        try {
             itemMetadata = new ItemMetadata("Math", "Geometry", "Medium");
             manager.addItem("user1", instrument.getId(), "MCQ", itemMetadata);
             System.out.println("Added item successfully");
+        } catch (Exception e) {
+            System.out.println("Test case #1 PASS: Could not add item during review");
         }
-        catch(Exception e){
-            System.out.println("Test case #1 PASS: Could not add item during review");        
-        }
-        
 
         // Test approving the instrument
         manager.approveAssessmentInstrument(instrument.getId(), "approver1");
@@ -55,7 +51,6 @@ public class AssessmentInstrumentTest {
         System.out.println("Added item successfully");
 
         // Test deleting the instrument
-
         manager.deleteAssessmentInstrument("user1", instrument.getId());
         System.out.println("Instrument deleted");
 
