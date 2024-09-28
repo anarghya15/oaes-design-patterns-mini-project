@@ -1,6 +1,5 @@
-public class FillInItem implements Item {
+public class FillInItem extends Item {
     private String id;
-    private ItemMetadata metadata;
     private String correctAnswer;
 
     public FillInItem(String id, ItemMetadata metadata, String correctAnswer) {

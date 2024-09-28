@@ -1,8 +1,7 @@
 import java.util.List;
 
-public class MCQItem implements Item {
+public class MCQItem extends Item {
     private String id;
-    private ItemMetadata metadata;
     private List<String> options;
     private int correctOption;
 
