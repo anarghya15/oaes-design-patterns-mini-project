@@ -87,4 +87,12 @@ public class AssessmentInstrument {
         this.approvedState = approvedState;
     }
 
+    public void review(){
+        state.review();
+    }
+
+    public void approve(){
+        state.approve();
+    }
+
 }

@@ -36,17 +36,14 @@ public class AssessmentInstrumentManager {
     public void reviewAssessmentInstrument(String id, String reviewerId) {
         System.out.println("Reviewing Assessment Instrument: " + id + " by reviewer: " + reviewerId);        
         AssessmentInstrument instrument = dbService.getAssessmentInstrument(id);
-        instrument.setState(instrument.getReviewState());
+        instrument.review();
         dbService.update(instrument);
     }
 
     public void approveAssessmentInstrument(String id, String approverId) {
         System.out.println("Approving Assessment Instrument: " + id + " by approver: " + approverId);        
         AssessmentInstrument instrument = dbService.getAssessmentInstrument(id);
-        if (instrument.getState() == instrument.getDraftState()) {
-            throw new IllegalStateException("Cannot approve an instrument under draft");
-        }
-        instrument.setState(instrument.getApprovedState());
+        instrument.approve();
         dbService.update(instrument);
         
     }
