@@ -43,7 +43,7 @@ public class AssessmentInstrumentManager {
     public void approveAssessmentInstrument(String id, String approverId) {
         System.out.println("Approving Assessment Instrument: " + id + " by approver: " + approverId);        
         AssessmentInstrument instrument = dbService.getAssessmentInstrument(id);
-        if (instrument.getState() instanceof DraftState) {
+        if (instrument.getState() == instrument.getDraftState()) {
             throw new IllegalStateException("Cannot approve an instrument under draft");
         }
         instrument.setState(instrument.getApprovedState());
@@ -54,7 +54,7 @@ public class AssessmentInstrumentManager {
     public void addItem(String userId, String instrumentId, String itemType, ItemMetadata itemMetadata) {
         System.out.println("Adding item to Assessment Instrument: " + instrumentId+ "by user: " + userId);        
         AssessmentInstrument instrument = dbService.getAssessmentInstrument(instrumentId);
-        if (instrument.getState() instanceof ReviewState) {
+        if (instrument.getState() == instrument.getReviewState()) {
             throw new IllegalStateException("Cannot modify an instrument under review");
         }
         Item item = itemBankManager.getItem(itemType, itemMetadata);
@@ -66,7 +66,7 @@ public class AssessmentInstrumentManager {
     public void removeItem(String userId, String instrumentId, String itemId) {
         System.out.println("Removing item from Assessment Instrument: " + instrumentId+ "by user: " + userId);
         AssessmentInstrument instrument = dbService.getAssessmentInstrument(instrumentId);
-        if (instrument.getState() instanceof ReviewState) {
+        if (instrument.getState() == instrument.getReviewState()) {
             throw new IllegalStateException("Cannot modify an instrument under review");
         }
         instrument.removeItem(itemId);
