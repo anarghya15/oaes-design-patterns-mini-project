@@ -13,7 +13,7 @@ public class AssessmentInstrument {
     private AssessmentInstrumentState state;
 
     public AssessmentInstrument(AssessmentInstrumentMetadata metadata) {
-        id = UUID.randomUUID().toString();
+        id = UUID.randomUUID().toString().substring(0, 8);
         this.metadata = metadata;
         items = new ArrayList<>();
 

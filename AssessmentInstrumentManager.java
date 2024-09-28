@@ -22,7 +22,7 @@ public class AssessmentInstrumentManager {
     }
 
     public void updateAssessmentInstrument(String userId, AssessmentInstrument instrument) {
-        System.out.println("Updating Assessment Instrument: " + instrument.getId() + "by user: " + userId);
+        System.out.println("Updating Assessment Instrument: " + instrument.getId() + " by user: " + userId);
         dbService.update(instrument);
         
     }
@@ -49,7 +49,7 @@ public class AssessmentInstrumentManager {
     }
 
     public void addItem(String userId, String instrumentId, String itemType, ItemMetadata itemMetadata) {
-        System.out.println("Adding item to Assessment Instrument: " + instrumentId+ "by user: " + userId);        
+        System.out.println("Adding item to Assessment Instrument: " + instrumentId+ " by user: " + userId);        
         AssessmentInstrument instrument = dbService.getAssessmentInstrument(instrumentId);
         if (instrument.getState() == instrument.getReviewState()) {
             throw new IllegalStateException("Cannot modify an instrument under review");
@@ -61,7 +61,7 @@ public class AssessmentInstrumentManager {
     }
 
     public void removeItem(String userId, String instrumentId, String itemId) {
-        System.out.println("Removing item from Assessment Instrument: " + instrumentId+ "by user: " + userId);
+        System.out.println("Removing item from Assessment Instrument: " + instrumentId+ " by user: " + userId);
         AssessmentInstrument instrument = dbService.getAssessmentInstrument(instrumentId);
         if (instrument.getState() == instrument.getReviewState()) {
             throw new IllegalStateException("Cannot modify an instrument under review");
